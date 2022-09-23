@@ -8,5 +8,7 @@ This test was done in 3 days for a VR company, in the VR game, you have to shoot
 
 Already there are two built versions, an executable for win64 and an .apk for Oculus Quest, in the releases section.
 
+Only the files inside the _Game folder are mine and open source.
+
 <img src="screenshot1.png" alt="screenshot">
 <img src="cubeOutside.png" alt="screenshot2">
