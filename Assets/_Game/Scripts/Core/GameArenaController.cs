@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
+using System.Threading.Tasks;
 using DG.Tweening;
 using SharedUtils;
 using Unity.VisualScripting;
@@ -27,16 +28,14 @@ namespace ShootBoxes.Core
         private float m_outAnimationDuration = 1.5f;
 
         private List<Vector3> m_initialScaleWalls = new List<Vector3>();
-        private MonoHelper m_monoHelper;
 
         [Inject]
-        public void Construct(Settings setting, GameController gameController, MonoHelper monoHelper)
+        public void Construct(Settings setting, GameController gameController)
         {
             m_gameController = gameController;
             m_arenaWalls = setting.ArenaWalls;
             m_inAnimationDuration = setting.InAnimationDuration;
             m_outAnimationDuration = setting.OutAnimationDuration;
-            m_monoHelper = monoHelper;
         }
 
         public void Setup()
@@ -55,14 +54,12 @@ namespace ShootBoxes.Core
             foreach (var item in m_arenaWalls)
                 item.localScale = Vector3.zero;
             SetArenaActive(true);
-            AppearingAnimation();
-            m_monoHelper.StartCoroutine(StartGameAfterAnimation());
+            _ = AppearingAnimation();
         }
 
         public void HideArenaGame()
         {
-            DisappearingAnimation();
-            m_monoHelper.StartCoroutine(DeactivateAfterDisappearingAnimation());
+            _ = DisappearingAnimation();
         }
 
 
@@ -72,32 +69,26 @@ namespace ShootBoxes.Core
                 wall.gameObject.SetActive(active);
         }
 
-        private void AppearingAnimation()
+        private async Task AppearingAnimation()
         {
             for (var i = 0; i < m_arenaWalls.Count; i++)
             {
                 m_arenaWalls[i].DOScale(m_initialScaleWalls[i], m_inAnimationDuration).SetEase(Ease.InOutSine);
             }
-        }
 
-        private IEnumerator StartGameAfterAnimation()
-        {
-            yield return new WaitForSeconds(m_inAnimationDuration);
+            await Task.Delay((int) (m_inAnimationDuration * 1000));
             m_gameController.StartGame();
         }
 
 
-        private void DisappearingAnimation()
+        private async Task DisappearingAnimation()
         {
             for (var i = 0; i < m_arenaWalls.Count; i++)
             {
                 m_arenaWalls[i].DOScale(Vector3.zero, m_outAnimationDuration).SetEase(Ease.InOutSine);
             }
-        }
 
-        private IEnumerator DeactivateAfterDisappearingAnimation()
-        {
-            yield return new WaitForSeconds(m_outAnimationDuration);
+            await Task.Delay((int) (m_outAnimationDuration * 1000));
             SetArenaActive(false);
         }
 

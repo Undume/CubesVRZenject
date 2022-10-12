@@ -22,7 +22,6 @@ namespace ShootBoxes.Core
             Container.BindInterfacesTo<InputActionManager>().AsSingle().WithArguments(m_ActionAssets);
             Container.BindInterfacesAndSelfTo<AppManager>().AsSingle().WithArguments(startingGameScene);
             Container.BindInterfacesAndSelfTo<GameController>().AsSingle();
-            Container.Bind<MonoHelper>().FromNewComponentOnNewGameObject().AsTransient();
             Container.Bind<IMenuController>().To<MenuController>().AsSingle().WithArguments(m_menuControllerSettings);
             Container.Bind<IArenaController>().To<GameArenaController>().AsSingle()
                 .WithArguments(m_gameInitializerSettings);
