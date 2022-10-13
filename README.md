@@ -5,6 +5,7 @@ This test was done in 3 days for a VR company, in the VR game, you have to shoot
 * Used the **Zenject** framework to implement a DI design pattern.
 * Used new **openXR** to crossplatform **PCVR** and **Oculus**. (Not working with HTC Vive because I am using the pointerPosition input)
 * Used **Resonance** from google for spatialization. I don't recommend using it anymore, it has been without support for years now.
+* There are a lot of stuff that can be improved. It is a rushed test.
 
 Already there are two built versions, an executable for win64 and an .apk for Oculus Quest, in the releases section.
 
