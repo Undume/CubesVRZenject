@@ -2,7 +2,7 @@
 
 This test was done in 3 days for a VR company, in the VR game, you have to shoot between 50-100 cubes.
 
-* Used the **Zenject** framework to implement a DI design pattern.
+* Used the **Zenject** framework to implement (and rush) some kind of DI design pattern.
 * Used new **openXR** to crossplatform **PCVR** and **Oculus**. (Not working with HTC Vive because I am using the pointerPosition input)
 * Used **Resonance** from google for spatialization. I don't recommend using it anymore, it has been without support for years now.
 * There is a lot of stuff that can be improved or is unfinished such as a proper interaction system. It is a rushed test.
