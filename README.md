@@ -1,6 +1,6 @@
 # CubesVRZenject 
 
-This test was done in 3 days for a VR company, in the VR game, you have to shoot between 50-100 cubes.
+This test was done in 3 days for a VR company. In the VR game, you have to shoot between 50-100 cubes.
 
 * Used the **Zenject** framework to implement (and rush) some kind of DI design pattern.
 * Used new **openXR plugin** to crossplatform **PCVR** and **Oculus**. (Not working with HTC Vive because I am using the pointerPosition input)
